@@ -1,0 +1,33 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>image</th>
+			<th>name</th>
+			<th>introduction</th>
+			<th></th>
+			<th colspan="4"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% users.each do |user| %>
+			<tr>
+				<td><%= link_to user do %>
+				<%= image_tag profile_url(user) %>
+					<% end %>
+				</td>
+				<td><%= user.name %></td>
+				<td><%= user.intro %></td>
+				<td>
+					<% if current_user != user %>
+						<% if user.followed_by?(current_user) %>
+							<%= link_to "Following", user_relationships_path(user),class: "btn btn-primary",style: "color:white;", method: :delete %>
+						<% else %>
+							<%= link_to "Follow", user_relationships_path(user),class: "btn btn-default", method: :post %>
+						<% end %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

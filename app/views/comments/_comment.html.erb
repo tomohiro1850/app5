@@ -1,0 +1,15 @@
+<%= form_for([@post,Comment.new]) do |f| %>
+    <div>
+        <%= f.label :body %>
+        <%= f.text_area :body %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
+
+<% @comments.each do |comment| %>
+    <%= comment.user.email %>
+    <%= comment.body %>
+    <%= link_to 'Destroy', post_comments_path(comment.post), method: :delete, data: { confirm: '本当に消しますか?'} %>
+<% end %>

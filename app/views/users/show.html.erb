@@ -1,0 +1,13 @@
+<div class="row">
+
+    <div class="col-xs-3">
+      <h2>User info</h2>
+      <%= render 'info', user: @user,now: ''%>
+       <h2>New Music</h2>
+       <%= render 'posts/form', post: @post %>
+    </div>
+    <div class="col-xs-9">
+      <h2>Music</h2>
+      <%= render 'posts/index',posts: @posts %>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<% if post.favorited_by?(current_user) %>
+  <%= link_to "", post_favorites_path(post.id), class: "glyphicon glyphicon-heart", method: :delete, remote: true %>
+<% else %>
+  <%= link_to "", post_favorites_path(post.id), class: "glyphicon glyphicon-heart-empty", method: :post, remote: true %>
+<% end %>
+<div class="num"><%= post.favorites.count %>いいね!</div>

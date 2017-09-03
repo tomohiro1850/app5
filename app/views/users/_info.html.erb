@@ -1,0 +1,44 @@
+<table class="table">
+	<tr><%= image_tag profile_url(user) %></tr>
+	<tr>
+		<th>name</th>
+		<th><%= user.name %></th>
+	</tr>
+	<tr>
+		<th>introduction</th>
+		<th><%= user.intro %></th>
+	</tr>
+</table>
+<div class="row">
+	<div class="col-xs-6 btn btn-default">
+		<%= link_to user_path(user) do %>
+			<div class="text">投稿数</div>
+			<div class="num"><%= user.posts.count %></div>
+		<% end %>
+	</div>
+	<div class="col-xs-6 btn btn-default">
+		<%= link_to favorites_user_path(user) do %>
+			<div class="text">いいね一覧</div>
+			<div class="num" ><%= user.favorites.count %></div>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-6 btn btn-default">
+		<%= link_to follows_user_path(user)  do %>
+			<div class="text">followings</div>
+			<div class="num"><%= user.followings.count %></div>
+		<% end %>
+	</div> 
+	<div class="col-xs-6 btn btn-default">
+		<%= link_to followers_user_path(user) do %>
+			<div class="text">followers</div>
+			<div class="num"><%= user.followers.count %></div>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<% if correct_user?(user) %>
+		<%= link_to "", edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+	<% end %>
+</div>
